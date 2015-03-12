@@ -1,58 +1,43 @@
 Calligraphy
 ===========
 
-Custom fonts in Android the easy way.
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Calligraphy-blue.svg?style=flat)](http://android-arsenal.com/details/1/163)
 
-Are you fed up of Custom views to set fonts? Or traversing the ViewTree to find TextViews? Yeah me too.
+Custom fonts in Android an OK way.
+
+Are you fed up of Custom Views to set fonts? Or traversing the ViewTree to find TextViews? Yeah me too.
 
 ![alt text](https://github.com/chrisjenx/Calligraphy/raw/master/screenshot.png "ScreenShot Of Font Samples")
-
-## Known Issue
-
-Lollipop `support-v4:21.0.0` has broken inflation inside `Fragment`s, inside `onCreateView` you need
-to inflate using the activity `LayoutInflater`.
-
-```java
-@Override
-public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
-    return getActivity().getLayoutInflater().inflate(R.layout.fragment_main, container, false);
-}
-```
 
 ##Getting started
 
 ### Dependency
 
-[Download from Maven Central (.aar)](http://search.maven.org/remotecontent?filepath=uk/co/chrisjenx/calligraphy/2.0.0/calligraphy-2.0.0.aar)
-
-__OR__
-
-Include the dependency:
+Include the dependency [Download (.aar)](http://search.maven.org/remotecontent?filepath=uk/co/chrisjenx/calligraphy/2.0.2/calligraphy-2.0.2.aar) :
 
 ```groovy
 dependencies {
-    compile 'uk.co.chrisjenx:calligraphy:2.0.0'
+    compile 'uk.co.chrisjenx:calligraphy:2.0.2'
 }
 ```
-### Fonts
+### Add Fonts
 
-Add your custom fonts to `assets/fonts/` all font definitions are relative to this path. 
+Add your custom fonts to `assets/` all font definitions are relative to this path. 
 
-### Custom Attribute
+### Usage
 
-We ship with `R.attr.fontPath`.
+```xml
+<TextView fontPath="fonts/MyFont.ttf"/>
+``` 
+**Note: The missing namespace, this __IS__ intentional.**
 
-This can be used in such a way: `<TextView fontPath="fonts/MyFont.ttf"/>` Please note the missing
-namespace, this IS intention.
+### Installation
 
-### Configuration
-
-Define your default font using `CalligraphyConfig`, in your `Application` class.
-Unfortunately `Activity#onCreate(Bundle)` is called _after_ `Activity#attachBaseContext(Context)` so
-the config needs to be defined before that.
+Define your default font using `CalligraphyConfig`, in your `Application` class in the `#onCreate()` method.
 
 ```java
-protected void onCreate() {
+@Override
+public void onCreate() {
     super.onCreate();
     CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                             .setDefaultFontPath("fonts/Roboto-RobotoRegular.ttf")
@@ -62,17 +47,18 @@ protected void onCreate() {
     //....
 }
 ```
+
 _Note: You don't need to define `CalligraphyConfig` but the library will apply
-no default font and use `R.id.fontPath`._
+no default font and use the default attribute of `R.id.fontPath`._
 
 ### Inject into Context
 
-Wrap the Activity Context:
+Wrap the `Activity` Context:
 
 ```java
 @Override
 protected void attachBaseContext(Context newBase) {
-    super.attachBaseContext(new CalligraphyContextWrapper(newBase));
+    super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
 }
 ```
 
@@ -169,7 +155,7 @@ It is possible to use multiple Typefaces inside a `TextView`, this isn't new con
 This _could_ be achieved using something like the following code.
 
 ```java
-SpannableStringBuilder builder = new SpannableStringBuilder();
+SpannableStringBuilder sBuilder = new SpannableStringBuilder();
 sBuilder.append("Hello!") // Bold this
         .append("I use Calligraphy"); // Default TextView font.
 // Create the Typeface you want to apply to certain text
@@ -193,7 +179,7 @@ Of course this is just an example. Your mileage may vary.
 
 This library was created because it is currently not possible to declare a custom font in XML files in Android.
 
-If you feel this should be possible to do, please star [this issue](https://code.google.com/p/android/issues/detail?id=1087) on the official Android bug tracker.
+If you feel this should be possible to do, please star [this issue](https://code.google.com/p/android/issues/detail?id=88945) on the official Android bug tracker.
 
 #Licence
 

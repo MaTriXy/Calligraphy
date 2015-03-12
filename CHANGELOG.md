@@ -1,6 +1,14 @@
 #Changelog
 
-#2.0.0 (WIP)
+#2.0.2 (05/01/2015)
+- Fixed `CalligraphyConfig.Builder` missing return statements.
+- Fixed `createView()` getting the wrong parent context, Fixed: #135, #120
+
+#2.0.1 (28/01/2014)
+- Throw exception on passing null into `CalligraphySpan`
+- Fixed memory bug with `Toolbar`. [@dlew](https://github.com/dlew)
+
+#2.0.0 (16/01/2014)
 **Breaking changes**
 This is a massive rewrite of the interception model. Look at `CalligraphyLayoutInflater` and
 `CalligraphyConfig` for more information on options and changes.
