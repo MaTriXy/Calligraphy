@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.Toast;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -29,7 +30,7 @@ public class PlaceholderFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.inject(this, view);
+        ButterKnife.bind(this, view);
 
         ViewStub stub = ButterKnife.findById(view, R.id.stub);
         stub.inflate();
