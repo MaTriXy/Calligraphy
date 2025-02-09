@@ -1,3 +1,5 @@
+# This version of Calligraphy has reached its end-of-life and is no longer maintained. Please migrate to [Calligraphy 3](https://github.com/InflationX/Calligraphy)!
+
 Calligraphy
 ===========
 
@@ -9,20 +11,25 @@ Are you fed up of Custom Views to set fonts? Or traversing the ViewTree to find 
 
 ![alt text](https://github.com/chrisjenx/Calligraphy/raw/master/screenshot.png "ScreenShot Of Font Samples")
 
-##Getting started
+## Getting started
 
 ### Dependency
 
-Include the dependency [Download (.aar)](http://search.maven.org/remotecontent?filepath=uk/co/chrisjenx/calligraphy/2.2.0/calligraphy-2.2.0.aar) :
+Include the dependency [Download (.aar)](http://search.maven.org/remotecontent?filepath=uk/co/chrisjenx/calligraphy/2.3.0/calligraphy-2.3.0.aar) :
 
 ```groovy
 dependencies {
-    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
+    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
 }
 ```
 ### Add Fonts
 
-Add your custom fonts to `assets/` all font definitions are relative to this path. 
+Add your custom fonts to `assets/`. All font definitions are relative to this path.
+
+Assuming that you are using Gradle you should create the assets directory under `src/main/` in your project directory if it does not already exist.
+As it's popular to use multi-project build with Gradle the path is usually `app/src/main/assets/`, where `app` is the project name.
+
+You might consider creating a `fonts/` subdirectory in the assets directory (as in examples).
 
 ### Usage
 
@@ -123,7 +130,7 @@ http://schemas.android.com/tools"`. See https://code.google.com/p/android/issues
 ```
 
 
-#FAQ
+# FAQ
 
 ### Font Resolution 
 
@@ -146,7 +153,7 @@ have to define a custom attribute.
 ### Why no jar?
 
 We needed to ship a custom ID with Calligraphy to improve the Font Injection flow. This
-unfortunately means that is has to be an `aar`. But you're using Gradle now anyway right?
+unfortunately means that it has to be an `aar`. But you're using Gradle now anyway right?
 
 ### Multiple Typeface's per TextView / Spannables
 
@@ -179,7 +186,7 @@ Both have a method called `setSwitchTypeface` that sets the typeface within the 
 
 
 
-#Collaborators
+# Collaborators
 
 - [@mironov-nsk](https://github.com/mironov-nsk)
 - [@Roman Zhilich](https://github.com/RomanZhilich)
@@ -187,14 +194,15 @@ Both have a method called `setSwitchTypeface` that sets the typeface within the 
 - [@Codebutler](https://github.com/codebutler)
 - [@loganj](https://github.com/loganj)
 - [@dlew](https://github.com/dlew)
+- [@ansman](https://github.com/ansman)
 
-#Note
+# Note
 
 This library was created because it is currently not possible to declare a custom font in XML files in Android.
 
 If you feel this should be possible to do, please star [this issue](https://code.google.com/p/android/issues/detail?id=88945) on the official Android bug tracker.
 
-#Licence
+# Licence
 
     Copyright 2013 Christopher Jenkins
     
